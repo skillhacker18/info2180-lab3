@@ -12,13 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
             //clear any existing x or o
             square.textContent = "";
             // clear board state for each square
-            boardState[index] = null; 
+            boardState[index] = null;
 
-            square.addEventListener("click", () => handleSquareClick(square, index));
-            
-            // mouseover and mouseout for hover effect
-            square.addEventListener("mouseover", () => square.classList.add("hover"));
-            square.addEventListener("mouseout", () => square.classList.remove("hover"));
         });
 
         // Reset status and class for a new game
@@ -63,9 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
+    squares.forEach((square, index) => {
+        square.addEventListener("click", () => handleSquareClick(square, index));
+        // mouseover and mouseout for hover effect
+        square.addEventListener("mouseover", () => square.classList.add("hover"));
+        square.addEventListener("mouseout", () => square.classList.remove("hover"));
+    });
     newGameButton.addEventListener("click", initializeBoard);
-
-
     initializeBoard();
 
 
