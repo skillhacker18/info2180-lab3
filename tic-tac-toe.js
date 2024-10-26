@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll("#board div");
     const statusDiv = document.getElementById("status");
-    const newGameButton = document.querySelector(".btn");
+    const newGameButton = document.querySelector(".btn"); // New game button
     let currentPlayer = "X";
     let boardState = Array(9).fill(null);
 
@@ -9,22 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
     function initializeBoard() {
         squares.forEach((square, index) => {
             square.className = "square";
+            //clear any existing x or o
             square.textContent = "";
-            boardState[index] = null;
+            // clear board state for each square
+            boardState[index] = null; 
 
             square.addEventListener("click", () => handleSquareClick(square, index));
-
+            
+            // mouseover and mouseout for hover effect
             square.addEventListener("mouseover", () => square.classList.add("hover"));
             square.addEventListener("mouseout", () => square.classList.remove("hover"));
         });
 
         // Reset status and class for a new game
-        currentPlayer = "X";
+        currentPlayer = "X";//start over with player X
         statusDiv.textContent = "Move your mouse over a square and click to play X or O.";
         statusDiv.classList.remove("you-won");
     }
 
     function handleSquareClick(square, index) {
+        // alows play only if the square is empty and there is nlo winner
         if (!square.textContent && !checkWinner()) {
             square.textContent = currentPlayer;// set X or O
             square.classList.add(currentPlayer);
