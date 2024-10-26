@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const boardState = Array(9).fill(null);
 
-    let currentPlayer = "x";
+    let currentPlayer = "X";
 
     squares.forEach((square, index) => {
         square.classList.add("square");
